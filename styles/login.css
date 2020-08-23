@@ -1,0 +1,47 @@
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.display {
+  width: 70%;
+  background-image: url('../images/display-image.png');
+  background-size: cover;
+}
+
+.form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form h2 {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+#login-btn {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.form .forgot-password {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.form .register {
+  font-size: 18px;
+}
+
+.form .register a {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
