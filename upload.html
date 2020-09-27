@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/index.css">
+    <title>Bloggo || Upload</title>
     <link rel="stylesheet" href="./styles/main.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <title>Bloggo</title>
 </head>
 
 <body>
@@ -19,10 +18,10 @@
         <div class="nav-logo">bloggo</div>
 
         <div class="nav-links">
-            <a href="#" class="active">home</a>
+            <a href="/">home</a>
             <a href="/saved.html">saved</a>
             <a href="/profile.html">profile</a>
-            <a href="/upload.html">upload</a>
+            <a href="#" class="active">upload</a>
         </div>
 
         <div class="nav-actions">
@@ -35,12 +34,30 @@
         </div>
 
     </div>
-
     <div class="content">
-        <div class="card-grid" id="home-grid"></div>
+        <div class="text-input-group">
+            <label>Title:</label>
+            <input type="text" />
+        </div>
+
+        <div class="image-upload" style="margin-top: 30px;">
+            <div class="upload-btn">
+                <span class="material-icons">
+                    publish
+                </span>
+                <span>upload</span>
+            </div>
+        </div>
+
+        <div class="text-input-group" style="max-width: 500px;">
+            <input type="text" placeholder="enter image description" />
+        </div>
+
+        <div class="text-area-group">
+            <label>Enter your article:</label>
+            <textarea></textarea>
+        </div>
     </div>
-    <script src="./javascript/helpers.js"></script>
-    <script src="./javascript/index.js"></script>
 </body>
 
 </html>

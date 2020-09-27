@@ -1,9 +1,9 @@
 * {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
-  box-sizing: border-box; /* Opera/IE 8+ */
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 /*
@@ -11,13 +11,13 @@ COLORS
 */
 
 .primary {
-  background-color: #7e1946;
-  color: white;
+	background-color: #7e1946;
+	color: white;
 }
 
 .secondary {
-  background-color: #f86624;
-  color: white;
+	background-color: #f86624;
+	color: white;
 }
 
 /*
@@ -25,22 +25,22 @@ BUTTONS
 */
 
 .btn {
-  width: fit-content;
-  text-align: center;
-  padding: 10px 20px;
-  font-weight: bolder;
-  border-radius: 3px;
-  text-transform: uppercase;
-  text-decoration: none;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+	width: fit-content;
+	text-align: center;
+	padding: 10px 20px;
+	font-weight: bolder;
+	border-radius: 3px;
+	text-transform: uppercase;
+	text-decoration: none;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .btn:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .btn:active {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0);
 }
 
 /*
@@ -48,22 +48,54 @@ TEXT INPUTS
 */
 
 .text-input-group {
-  margin: 10px 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0px;
+	width: 100%;
+	max-width: 700px;
 }
 
-.text-input-group input[type="text"], input[type="password"] {
-  height: 60px;
-  width: 100%;
-  padding: 0px 10px;
-  border: solid 1px #000;
-  border-radius: 3px;
-  margin-top: 5px;
-  font-size: 18px;
+.text-input-group input[type='text'],
+input[type='password'] {
+	height: 60px;
+	width: 100%;
+	padding: 0px 10px;
+	border: solid 1px #000;
+	border-radius: 3px;
+	margin-top: 5px;
+	font-size: 18px;
 }
 
-.text-input-group input[type="text"]:focus, input[type="password"]:focus {
-  outline: none;
-  border: solid 1.5px;
+.text-input-group input[type='text']:focus,
+input[type='password']:focus {
+	outline: none;
+	border: solid 2px;
+}
+
+/*
+TEXT AREA
+*/
+
+.text-area-group {
+	margin: 20px;
+	width: 100%;
+	max-width: 700px;
+}
+
+.text-area-group textarea {
+	height: 300px;
+	width: 100%;
+	padding: 10px 10px;
+	border: solid 1px #000;
+	border-radius: 3px;
+	margin-top: 5px;
+	font-size: 18px;
+	resize: none;
+}
+
+.text-area-group textarea:focus {
+	outline: none;
+	border: solid 2px;
 }
 
 /*
@@ -71,45 +103,50 @@ CARDS
 */
 
 .card {
-  margin: 10px 20px;
-  padding: 15px;
-  border: solid 1.5px #b8b8b8;
-  border-radius: 5px;
+	margin: 10px 20px;
+	padding: 15px;
+	border: solid 1.5px #b8b8b8;
+	border-radius: 5px;
 }
 
 .card .card-title {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 20px;
+	font-size: 26px;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
 
 .card .card-body {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .card .card-actions {
-  display: flex;
-  justify-content: flex-end;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: auto auto auto;
 }
 
 /*
 IMAGE
 */
 .img-group {
-  margin: 10px 20px;
-  padding-bottom: 20px;
+	margin: 10px 20px;
+	padding-bottom: 20px;
 }
 
 .img-group img {
-  width: 100%;
-  margin-bottom: 20px;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .img-group label {
-  font-style: italic;
-  font-weight: lighter;
-  text-transform: lowercase;
-  margin-left: 3px;
+	font-style: italic;
+	font-weight: lighter;
+	text-transform: lowercase;
+	margin-left: 3px;
 }
 
 /*
@@ -117,73 +154,103 @@ NAVBAR
 */
 
 .navbar {
-  height: 70px;
-  width: 100%;
-  top: 0;
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px 20px;
+	height: 70px;
+	width: 100%;
+	top: 0;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px 20px;
 }
 
 .navbar .nav-logo {
-  height: 80%;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 25px;
-  padding-right: 20px;
-  border-right: 1px solid white;
+	height: 80%;
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 25px;
+	padding-right: 20px;
+	border-right: 1px solid white;
 }
 
 .navbar .nav-links {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: row;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: row;
 }
 
 .navbar .nav-links a {
-  color: white;
-  margin-right: 20px;
-  text-decoration: none;
-  text-transform: lowercase;
-  font-size: 25px;
-  font-weight: lighter;
+	color: white;
+	margin-right: 20px;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-size: 25px;
+	font-weight: lighter;
 }
 
 .navbar .nav-links .active {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 .navbar .nav-actions {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .navbar .nav-actions .nav-action {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .navbar .nav-actions .nav-action a {
-  margin-right: 10px;
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
+	margin-right: 10px;
+	text-decoration: none;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+/*
+IMAGE UPLOAD
+*/
+
+.image-upload {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+	max-width: 500px;
+	width: 100%;
+	background-color: #ededed;
+}
+
+.image-upload .upload-btn {
+	font-weight: lighter;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #c4c4c4;
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+	cursor: pointer;
 }
 
 /*
 MAIN DIV
 */
-.main{
-  margin-top: 70px;
-  width: 100%;
-  padding: 50px;
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 70px;
+	width: 100%;
+	padding: 50px;
 }
