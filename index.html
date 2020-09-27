@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>Bloggo</title>
 </head>
+
 <body>
-    
+    <div class="navbar primary">
+
+        <div class="nav-logo">bloggo</div>
+
+        <div class="nav-links">
+            <a href="#" class="active">home</a>
+            <a href="#">saved</a>
+            <a href="#">profile</a>
+            <a href="#">upload</a>
+        </div>
+
+        <div class="nav-actions">
+            <div class="nav-action">
+                <a href="#">logout</a>
+                <span class="material-icons">
+                    exit_to_app
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main">
+        <div class="card-grid" id="home-grid"></div>
+    </div>
+
+    <script src="./javascript/index.js"></script>
 </body>
+
 </html>
