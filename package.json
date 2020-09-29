@@ -1,0 +1,28 @@
+{
+  "name": "bloggo",
+  "version": "1.0.0",
+  "description": "Blog sharing service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgautham3110/bloggo.git"
+  },
+  "keywords": [
+    "Bloggo",
+    "Blog",
+    "Sharing"
+  ],
+  "author": "R Gautham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgautham3110/bloggo/issues"
+  },
+  "homepage": "https://github.com/rgautham3110/bloggo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
