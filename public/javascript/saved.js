@@ -50,7 +50,6 @@ blogs = [
 
 let savedGrid = document.getElementById('saved-grid');
 blogs.forEach((blog) => {
-	console.log(blog);
 	let card = getCard(blog, 'delete');
 	savedGrid.appendChild(card);
 });

@@ -74,7 +74,6 @@ blogs = [
 
 let homeGrid = document.getElementById('home-grid');
 blogs.forEach((blog) => {
-	console.log(blog);
 	let card = getCard(blog, 'save');
 	homeGrid.appendChild(card);
 });
