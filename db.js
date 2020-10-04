@@ -4,6 +4,14 @@ const { User } = require('./schema');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 
+let errorCode = {
+	error: 0,
+	usernameNotAvailable: 1,
+	emailNotAvailable: 2,
+	userNotFound: 3,
+	incorrectPassword: 4,
+};
+
 mongoose
 	.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
@@ -21,17 +29,24 @@ exports.createUser = (user) => {
 			.then((hash) => {
 				user.password = hash;
 				const newUser = new User(user);
-				newUser.save();
+				return newUser.save();
 			})
-			.then(() => resolve('User created!'))
+			.then(() =>
+				resolve({
+					message: 'User created!',
+				}),
+			)
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 };
 
 exports.loginUser = (user) => {
-	console.log(user);
 	return new Promise((resolve, reject) => {
 		getHash(user.username)
 			.then((hash) => comparePassword(user.password, hash))
@@ -39,7 +54,10 @@ exports.loginUser = (user) => {
 				jsonwebtoken.sign(user, 'B6UrjzkEgkfCVX', (err, token) => {
 					if (err) {
 						console.log(err);
-						reject('Error creating token!');
+						reject({
+							message: 'Internal Error!',
+							errorCode: errorCode.error,
+						});
 					} else {
 						resolve({
 							message: 'Successfully Authenticated!',
@@ -48,7 +66,9 @@ exports.loginUser = (user) => {
 					}
 				});
 			})
-			.catch((err) => reject(err));
+			.catch((err) => {
+				reject(err);
+			});
 	});
 };
 
@@ -58,13 +78,20 @@ function checkEmailAvailable(email) {
 			.exec()
 			.then((user) => {
 				if (user) {
-					reject('Email already associated with a user!');
+					reject({
+						message: 'Email already associated with a user!',
+						errorCode: errorCode.emailNotAvailable,
+					});
 				} else {
-					resolve('Email available!');
+					resolve();
 				}
 			})
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 }
@@ -75,13 +102,20 @@ function checkUsernameAvailable(username) {
 			.exec()
 			.then((user) => {
 				if (user) {
-					reject('Username already taken!');
+					reject({
+						message: 'Username already taken!',
+						errorCode: errorCode.usernameNotAvailable,
+					});
 				} else {
-					resolve('Username available!');
+					resolve();
 				}
 			})
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 }
@@ -94,11 +128,18 @@ function getHash(username) {
 				if (user) {
 					resolve(user.password);
 				} else {
-					reject('User not found!');
+					reject({
+						message: 'User not found!',
+						errorCode: errorCode.userNotFound,
+					});
 				}
 			})
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 }
@@ -111,7 +152,11 @@ function hashPassword(password) {
 				resolve(hash);
 			})
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 }
@@ -122,13 +167,20 @@ function comparePassword(password, hash) {
 			.compare(password, hash)
 			.then((result) => {
 				if (result) {
-					resolve('Password Correct!');
+					resolve();
 				} else {
-					reject('Password Incorrect!');
+					reject({
+						message: 'Password Incorrect!',
+						errorCode: errorCode.incorrectPassword,
+					});
 				}
 			})
 			.catch((err) => {
-				reject(err);
+				console.log(err);
+				reject({
+					message: 'Internal Error',
+					errorCode: err,
+				});
 			});
 	});
 }

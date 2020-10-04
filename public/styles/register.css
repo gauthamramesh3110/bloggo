@@ -1,0 +1,43 @@
+.header {
+	height: 100px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 40px;
+	position: fixed;
+	top: 0;
+}
+
+.content {
+	margin-top: 100px;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+.section {
+	width: 100%;
+	margin-top: 50px;
+	display: flex;
+	padding: 0px 50px;
+	flex-direction: column;
+}
+
+.section .section-header {
+	font-weight: 700;
+	font-size: 30px;
+}
+
+.section .section-content {
+	margin-top: 20px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 50px;
+}
+
+.btn {
+	margin-top: 50px;
+}

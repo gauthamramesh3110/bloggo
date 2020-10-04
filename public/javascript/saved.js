@@ -1,3 +1,5 @@
+checkAuthentication();
+
 blogs = [
 	{
 		title: 'This is a test header 1',
