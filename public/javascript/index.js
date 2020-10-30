@@ -1,81 +1,20 @@
 checkAuthentication();
 
-blogs = [
-	{
-		title: 'This is a test header 1',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
+fetch('/getAllBlogs', {
+	method: 'GET',
+	headers: {
+		'Token': getCookie('token'),
 	},
-
-	{
-		title: 'This is a test header 2',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-
-	{
-		title: 'This is a test header 3',
-		body:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum massa faucibus laoreet metus sit vitae ligula ultrices vestibulum. Diam nec volutpat facilisis euismod aenean molestie consequat est...',
-	},
-];
-
-let homeGrid = document.getElementById('home-grid');
-blogs.forEach((blog) => {
-	let card = getCard(blog, 'save');
-	homeGrid.appendChild(card);
+}).then((response) => {
+	if (response.ok) {
+		response.json().then((body) => {
+			let blogs = body.blogs;
+			let homeGrid = document.getElementById('home-grid');
+			blogs.forEach((blog) => {
+				let card = getCard(blog, 'save');
+				homeGrid.appendChild(card);
+			});
+		});
+	} else {
+	}
 });

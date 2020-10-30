@@ -1,16 +1,9 @@
-require('dotenv');
+require('dotenv').config();
 const mongoose = require('mongoose');
-const { User } = require('./schema');
+const { User, Blog } = require('./schema');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
-
-let errorCode = {
-	error: 0,
-	usernameNotAvailable: 1,
-	emailNotAvailable: 2,
-	userNotFound: 3,
-	incorrectPassword: 4,
-};
+const errorCode = require('./errorCode').errorCode;
 
 mongoose
 	.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -49,9 +42,13 @@ exports.createUser = (user) => {
 exports.loginUser = (user) => {
 	return new Promise((resolve, reject) => {
 		getHash(user.username)
-			.then((hash) => comparePassword(user.password, hash))
+			.then((response) => {
+				user.firstname = response.firstname;
+				user.lastname = response.lastname;
+				return comparePassword(user.password, response.hash);
+			})
 			.then(() => {
-				jsonwebtoken.sign(user, 'B6UrjzkEgkfCVX', (err, token) => {
+				jsonwebtoken.sign(user, process.env.JWT_PRIVATE_KEY, (err, token) => {
 					if (err) {
 						console.log(err);
 						reject({
@@ -68,6 +65,48 @@ exports.loginUser = (user) => {
 			})
 			.catch((err) => {
 				reject(err);
+			});
+	});
+};
+
+exports.saveBlog = (blogDetails) => {
+	return new Promise((resolve, reject) => {
+		const newBlog = new Blog(blogDetails);
+		newBlog
+			.save()
+			.then(() => {
+				resolve({
+					message: 'Blog saved successfully!',
+				});
+			})
+			.catch((err) =>
+				reject({
+					message: 'Internal Error!',
+					errorCode: errorCode.error,
+				}),
+			);
+	});
+};
+
+exports.getAllBlogs = () => {
+	return new Promise((resolve, reject) => {
+		Blog.find()
+			.limit(15)
+			.sort('-date')
+			.select('title body')
+			.exec()
+			.then((blogs) => {
+				resolve({
+					message: 'Successfully retrived all blogs.',
+					blogs: blogs,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+				reject({
+					message: 'Internal Error!',
+					errorCode: errorCode.error,
+				});
 			});
 	});
 };
@@ -122,11 +161,11 @@ function checkUsernameAvailable(username) {
 
 function getHash(username) {
 	return new Promise((resolve, reject) => {
-		User.findOne({ username }, 'password')
+		User.findOne({ username }, 'password firstname lastname')
 			.exec()
 			.then((user) => {
 				if (user) {
-					resolve(user.password);
+					resolve({ hash: user.password, firstname: user.firstname, lastname: user.lastname });
 				} else {
 					reject({
 						message: 'User not found!',
