@@ -14,6 +14,10 @@ function getCard(blog, buttonActionText) {
 	let bodyText = document.createTextNode(blog.body);
 	cardBody.appendChild(bodyText);
 
+	let bodyFade = document.createElement('div');
+	bodyFade.className = 'body-fade';
+	cardBody.appendChild(bodyFade);
+
 	let cardActions = document.createElement('div');
 	cardActions.className = 'card-actions';
 
