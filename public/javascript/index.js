@@ -3,7 +3,7 @@ checkAuthentication();
 fetch('/getAllBlogs', {
 	method: 'GET',
 	headers: {
-		'Token': getCookie('token'),
+		Token: getCookie('token'),
 	},
 }).then((response) => {
 	if (response.ok) {

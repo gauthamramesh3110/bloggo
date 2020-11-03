@@ -116,6 +116,7 @@ CARDS
 	font-size: 26px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	cursor: pointer;
 }
 
 .card .card-body {
@@ -150,7 +151,11 @@ CARDS
 IMAGE
 */
 .img-group {
+	display: none;
+	flex-direction: column;
+	align-items: center;
 	margin: 10px 20px;
+	margin-top: 100px;
 	padding-bottom: 20px;
 }
 
@@ -263,6 +268,23 @@ IMAGE UPLOAD
 	width: 100px;
 	border-radius: 50px;
 	cursor: pointer;
+}
+
+/*
+ARTICLE
+*/
+
+.article-title {
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.article-body {
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: lighter;
+	padding: 0px 100px;
 }
 
 /*

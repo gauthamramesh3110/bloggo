@@ -1,6 +1,7 @@
 function getCard(blog, buttonActionText) {
 	let card = document.createElement('div');
 	card.className = 'card';
+	card.id = blog._id;
 
 	let cardTitle = document.createElement('div');
 	cardTitle.className = 'card-title';
@@ -31,6 +32,11 @@ function getCard(blog, buttonActionText) {
 	card.appendChild(cardTitle);
 	card.appendChild(cardBody);
 	card.appendChild(cardActions);
+
+	cardTitle.onclick = function (e) {
+		setCookie('blogId', blog._id);
+		window.location.replace('/article.html');
+	};
 
 	return card;
 }

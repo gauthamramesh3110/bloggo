@@ -111,6 +111,26 @@ exports.getAllBlogs = () => {
 	});
 };
 
+exports.getBlog = (blogId) => {
+	return new Promise((resolve, reject) => {
+		Blog.findById(blogId)
+			.exec()
+			.then((blog) => {
+				resolve({
+					message: 'Successfully retrived all blogs.',
+					blog: blog,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+				reject({
+					message: 'Internal Error!',
+					errorCode: errorCode.error,
+				});
+			});
+	});
+};
+
 function checkEmailAvailable(email) {
 	return new Promise((resolve, reject) => {
 		User.findOne({ email: email })

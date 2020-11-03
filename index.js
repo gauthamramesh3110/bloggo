@@ -74,6 +74,21 @@ app.get('/getAllBlogs', verifyToken, (req, res) => {
 		});
 });
 
+app.get('/getBlog/:blogId', verifyToken, (req, res) => {
+	db.getBlog(req.params.blogId)
+		.then((response) => {
+			res.status(200).json(response);
+		})
+		.catch((err) => {
+			res.status(400).json(err);
+		});
+});
+
+app.get('/getImage/:imageName', verifyToken, (req, res) => {
+	let imageName = req.params.imageName;
+	res.sendFile(`${__dirname}/uploads/${imageName}`);
+});
+
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on port: ${process.env.PORT}`);
 });
