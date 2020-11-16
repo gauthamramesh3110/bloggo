@@ -4,23 +4,24 @@ function loginUser(username, password) {
 		password,
 	};
 
-	fetch('/loginUser', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(loginDetails),
-	}).then((response) => {
-		if (response.ok) {
-			response.json().then((body) => {
-				setCookie('token', body.token);
-				window.location.replace('/');
-			});
-		} else {
-			response.json().then((body) => {
-				console.log(body.message);
-			});
-		}
+	return new Promise((resolve, reject) => {
+		fetch('/loginUser', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(loginDetails),
+		}).then((response) => {
+			if (response.ok) {
+				response.json().then((body) => {
+					resolve(body);
+				});
+			} else {
+				response.json().then((body) => {
+					reject(body);
+				});
+			}
+		});
 	});
 }
 
@@ -33,21 +34,22 @@ function registerUser(firstname, lastname, username, email, password) {
 		password,
 	};
 
-	fetch('/createUser', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(newUserDetails),
-	}).then((response) => {
-		if (response.ok) {
-			console.log('ok')
-			loginUser(username, password);
-		} else {
-			response.json().then((body) => {
-				console.log(body);
-			});
-		}
+	return new Promise((resolve, reject) => {
+		fetch('/createUser', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newUserDetails),
+		}).then((response) => {
+			if (response.ok) {
+				resolve({ username, password });
+			} else {
+				response.json().then((body) => {
+					reject(body);
+				});
+			}
+		});
 	});
 }
 

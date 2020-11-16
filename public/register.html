@@ -10,6 +10,11 @@
 			rel="stylesheet"
 		/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+		<link rel="manifest" href="./assets/site.webmanifest" />
 
 		<title>Bloggo || Register</title>
 	</head>
@@ -20,34 +25,40 @@
 			<div class="section">
 				<div class="section-header">personal details</div>
 				<div class="section-content">
-					<div class="text-input-group">
+					<div class="text-input-group" id="first-name">
 						<label>First Name:</label>
-						<input type="text" id="first-name" />
+						<input type="text" />
+						<div class="error-message">Error Message.</div>
 					</div>
-					<div class="text-input-group">
+					<div class="text-input-group" id="last-name">
 						<label>Last Name:</label>
-						<input type="text" id="last-name" />
+						<input type="text" />
+						<div class="error-message">Error Message.</div>
 					</div>
-					<div class="text-input-group">
+					<div class="text-input-group" id="username">
 						<label>Username:</label>
-						<input type="text" id="username" />
+						<input type="text" />
+						<div class="error-message">Error Message.</div>
 					</div>
-					<div class="text-input-group">
+					<div class="text-input-group" id="email">
 						<label>Email:</label>
-						<input type="text" id="email" />
+						<input type="text" />
+						<div class="error-message">Error Message.</div>
 					</div>
 				</div>
 			</div>
 			<div class="section">
 				<div class="section-header">password</div>
 				<div class="section-content">
-					<div class="text-input-group">
+					<div class="text-input-group" id="password">
 						<label>Password:</label>
-						<input type="password" id="password" />
+						<input type="password" />
+						<div class="error-message">Error Message.</div>
 					</div>
-					<div class="text-input-group">
+					<div class="text-input-group" id="retype-password">
 						<label>Retype Password:</label>
-						<input type="password" id="retype-password" />
+						<input type="password" />
+						<div class="error-message">Error Message.</div>
 					</div>
 				</div>
 			</div>
